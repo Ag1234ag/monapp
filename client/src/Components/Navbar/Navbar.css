@@ -1,0 +1,10 @@
+.lin{
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Comic sans Ms", cursive , sans-serif ; 
+    font-style:italic;
+    color:white;
+  }
+  .lin:hover{
+      color:#dc3545;
+  }
