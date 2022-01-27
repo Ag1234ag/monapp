@@ -1,13 +1,15 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { toggleFalse } from "../../JS/Actions/Actions";
+import { logout} from "../../JS/Actions/authActions";
+import { useSelector, useDispatch } from "react-redux";
+import { HiOutlineLogout } from "react-icons/hi";
 import logo from '../../assets/logo.png'
 import './Navbar.css'
 import {Navbar , Container , Nav , NavDropdown } from 'react-bootstrap';
 const Navbarr = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.authReducer.isAuth);
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -35,13 +37,20 @@ const Navbarr = () => {
         <NavDropdown.Item href="#action/3.3">Acc</NavDropdown.Item>
       </NavDropdown>
               <Link to="/ContactUS" className="lin">ContactUS</Link>
+              <Link to="/Cart" className="lin">Cart</Link>
+              {isAuth ? (
+          <button onClick={() => dispatch(logout())} className="icon" > <HiOutlineLogout style={{ color:"#fff" , fontSize: "1.5em"}} /> </button> 
+          ) : (
+            <div>
               <Link to="/CreateAccount" className="lin">Create Account</Link>
               <Link to="/login" className="lin">Login</Link>
-          
+              </div>
+              )}
             </Nav>
       
           </Navbar.Collapse>
-        </Container>
+          
+          </Container>
       </Navbar>
      
     </div>
