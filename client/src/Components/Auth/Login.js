@@ -25,7 +25,7 @@ const handleFormChange = (e) =>
     <h3 className="heading">Login</h3>
     <input type="email" onChange={handleFormChange} placeholder="Enter Your Email..." name="Email" autocomplete="off" className="email" required />
     <br/>
-    <input type="password" onChange={handleFormChange} placeholder="Enter Your Password..."  name="Pasword" autocomplete="off" className="password" required />
+    <input type="password" onChange={handleFormChange} placeholder="Enter Your Password..."  name="Password" autocomplete="off" className="password" required />
     <button onClick={handleConfim} className="submit-btn">Login</button>
  <Link to="/CreateAccount" className="link">already have an acount? Login in here</Link>
 </div>

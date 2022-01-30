@@ -4,8 +4,12 @@
     font-family: "Comic sans Ms", cursive , sans-serif ; 
     font-style:italic;
     color:white;
+    margin-left: 20px;
   }
   .lin:hover{
+      color:#dc3545;
+  }
+  .linn:hover{
       color:#dc3545;
   }
   .icon {

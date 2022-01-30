@@ -1,4 +1,10 @@
+.footer {
+    background-color: #000000;
+    opacity: 0.5;
+}
+
+
 .Copyright {
-    color: black;
+    color: whitesmoke;
     font-size: x-large;
 }

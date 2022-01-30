@@ -10,10 +10,6 @@ import {
 } from "../../JS/Actions/productActions";
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  onAddToCart = async (id, productId) => {
-    await addToCart(id, productId, 1);
-    alert ('Item added to Cart');
-}
 
   return (
     <div>
@@ -24,11 +20,7 @@ const ProductCard = ({ product }) => {
           </Card.Subtitle>
          
           
-          <Button
-                              
-                                    size="sm"
-                                    onClick={onAddToCart()}
-                                    >Add To Cart</Button> 
+          <Button>Add To Cart</Button> 
         </Card.Body>
       </Card>
     </div>

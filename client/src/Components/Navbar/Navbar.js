@@ -5,6 +5,7 @@ import { logout} from "../../JS/Actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
 import { HiOutlineLogout } from "react-icons/hi";
 import logo from '../../assets/logo.png'
+import Filter from '../Filter/Filter.js';
 import './Navbar.css'
 import {Navbar , Container , Nav , NavDropdown } from 'react-bootstrap';
 const Navbarr = () => {
@@ -30,14 +31,15 @@ const Navbarr = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Link to="/" className="lin" >Home</Link>
-              <NavDropdown title="Products Categories"  className="link">
-        <NavDropdown.Item href="#action/3.1">Info</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Phone</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Acc</NavDropdown.Item>
+              <Link to="/" className="lin">Home</Link>
+              <NavDropdown title="Products Categories"  className="lin">
+        <NavDropdown.Item href="/Smartphone" className="linn">Smartphone</NavDropdown.Item>
+        <NavDropdown.Item href="/Tablettes"  className="linn">Tablettes</NavDropdown.Item>
+        <NavDropdown.Item href="/Computers"  className="linn">Computers</NavDropdown.Item>
+        <NavDropdown.Item href="/Printers"   className="linn">Printers</NavDropdown.Item>
       </NavDropdown>
               <Link to="/ContactUS" className="lin">ContactUS</Link>
-              <Link to="/Cart" className="lin">Cart</Link>
+              <Link to="/cart" className="lin">Cart</Link>
               {isAuth ? (
           <button onClick={() => dispatch(logout())} className="icon" > <HiOutlineLogout style={{ color:"#fff" , fontSize: "1.5em"}} /> </button> 
           ) : (
@@ -47,7 +49,7 @@ const Navbarr = () => {
               </div>
               )}
             </Nav>
-      
+            <Filter />
           </Navbar.Collapse>
           
           </Container>

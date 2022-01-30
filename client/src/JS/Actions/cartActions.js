@@ -4,7 +4,7 @@ import { GET_CART, ADD_TO_CART, DELETE_FROM_CART, CART_LOADING } from '../Action
 
 export const getCart = (id) => dispatch => {
     dispatch(setCartLoading());
-    axios.get(`/api/cart/${id}`)
+    axios.get(`/api/cart/cart/${id}`)
         .then(res => dispatch({
             type: GET_CART,
             payload: res.data
