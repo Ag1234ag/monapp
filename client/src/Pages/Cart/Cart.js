@@ -1,28 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../JS/Actions/cartActions";
-import  {getAuthUser } from "../../JS/Actions/authActions";
 import ListeCart from "../Liste/ListeCart/ListeCart";
 const Cart = () => {
-  const auth = useSelector((state) => state.authReducer.user._id);
-  const cart = useSelector((state) => state.cartReducer.cart);
   const dispatch = useDispatch();
+  const cartToFind = useSelector(
+    (state) => state.cartReducer
+  );
+  const load = useSelector((state) => state.cartReducer.loading);
   useEffect(() => {
-    dispatch(getAuthUser);
+    dispatch(getCart());
   }, [dispatch]);
-  useEffect(() => {
-        dispatch(getCart(auth));
-      }, [dispatch]);
-     
-      
-      return (
-       
-        <div className="productlist">
-        { for (var i = 0; i < 9; i++) {
-          console.log(i);
-       }
-        </div>
-      );
-    };
+  console.log(cartToFind)
+  return load ? (
+    <h2>loading</h2>
+  ) : (
+    <div className="productlist">
+      { cartToFind.items.map((items) => (
+        <ListeCart items={items} key={items.id} />
+      ))}
+    </div>
+  );
+};
 
 export default Cart;

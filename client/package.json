@@ -49,4 +49,6 @@
     ]
   },
   "proxy": "http://localhost:6000"
+    
+  
 }

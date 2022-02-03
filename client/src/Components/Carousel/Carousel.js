@@ -1,29 +1,40 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import P from "../../assets/1.jpg"
+import L from "../../assets/2.jpg"
+import F from "../../assets/5.jpg"
+import R from "../../assets/l.jpg"
 const Carousell = () => {
     return (
         <div>
            <Carousel className="caroussize">
   <Carousel.Item interval= '1500'>
-    <img width={600} height={600}
+    <img width={500} height={500}
       className="d-block w-100"
-      src= "https://thebutlercollegian.com/wp-content/uploads/2019/03/netflix-image.jpg"
+      src= {P}
       alt="First slide"
     />
   </Carousel.Item>
   <Carousel.Item interval= '1500'>
-    <img width={600} height={600}
+    <img width={500} height={500}
       className="d-block w-100"
-      src= "https://www.plex.tv/wp-content/uploads/2021/04/plex-splash-screen-04-30-21-new-1440x810.png"
+      src= {L}
       alt="Second slide"
     />
 
   </Carousel.Item>
   <Carousel.Item interval= '1500'>
-    <img width={600} height={600}
+    <img width={500} height={500}
       className="d-block w-100 "
-      src="https://images4.alphacoders.com/844/thumb-1920-844967.jpg"
+      src={F}
       alt="Third slide"
+    />
+    </Carousel.Item>
+  <Carousel.Item interval= '1500'>
+    <img width={500} height={500}
+      className="d-block w-100 "
+      src={R}
+      alt="4 slide"
     />
 
   </Carousel.Item>

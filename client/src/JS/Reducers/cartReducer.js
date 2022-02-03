@@ -1,38 +1,25 @@
-import { GET_CART, ADD_TO_CART, DELETE_FROM_CART, CART_LOADING } from '../ActionTypes/CartTypes';
-
-const initialState = {
+import { GET_CART_LOAD  ,GET_CART_SUCESS, GET_CART_FAIL } from '../ActionTypes/CartTypes';
+const initState = {
     cart: null,
-    loading: false
+    loading: false,
+    cartToFind: [],
+    load: false,
+    errors: null,
 }
 
-export default function(state=initialState, action){
-    switch(action.type){
-        case GET_CART:
-            return {
-                ...state,
-                cart: action.payload,
-                loading: false
-            }
+const cartReducer = (state = initState, { type, payload }) => {
+    switch (type) {
+        case GET_CART_LOAD:
+            return { ...state, load: true };
+          case GET_CART_SUCESS:
+            return { ...state, load: false, cart: payload };
+          case GET_CART_FAIL:
+            return { ...state, load: false, errors: payload };
 
-        case ADD_TO_CART:
-            return {
-                ...state,
-                cart: action.payload
-            }
-
-        case DELETE_FROM_CART:
-            return {
-                ...state,
-                cart: action.payload
-            }
-
-        case CART_LOADING:
-            return {
-                ...state, 
-                loading: true
-            }
+       
 
         default:
             return state;
     }
-}
+};
+export default cartReducer;

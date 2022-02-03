@@ -13,6 +13,10 @@ import Computers from "./Pages/Category/Computers/Computers";
 import Tablettes  from "./Pages/Category/Tablettes/Tablettes";
 import Printers from "./Pages/Category/Printers/Printers";
 import ListeCart from "./Pages/Liste/ListeCart/ListeCart";
+import Homeadmin from "./Pages/Admin/HomeAdmin/Homeadmin";
+import Order from "./Pages/Admin/Order/Order";
+import Footer from "./Components/Footer/Footer";
+import Profile from "./Pages/Profile/Profile";
 
 function App() {
   return (
@@ -26,11 +30,16 @@ function App() {
         <Route path="/Computers" component={Computers} />
         <Route path="/Tablettes" component={Tablettes} />
         <Route path="/Printers" component={Printers} />
+        <Route path="/Order" component={Order} />
+        <Route path="/Profile" component={Profile} />
+        <Route path="/Homeadmin" component={Homeadmin} />
         <Route path="/login" component={Login} />
         <Route path="/CreateAccount" component={Register} />
-        <Route path="/cart" component={Cart} />
+        <Route path="/cart/:id" component={Cart} />
+        <Route path="/ListeCart" component={ListeCart} />
         <Route path="/*" component={Error} />
       </Switch>
+      <Footer />
     </div>
   );
 }

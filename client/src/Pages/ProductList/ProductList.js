@@ -16,6 +16,7 @@ const ProductList = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
+  console.log(productsToFind)
   return load ? (
     <h2>loading</h2>
   ) : (

@@ -1,37 +1,17 @@
 import axios from 'axios';
-import { returnErrors } from './errorActions';
-import { GET_CART, ADD_TO_CART, DELETE_FROM_CART, CART_LOADING } from '../ActionTypes/CartTypes';
+import {GET_CART_LOAD  ,GET_CART_SUCESS, GET_CART_FAIL} from '../ActionTypes/CartTypes';
 
-export const getCart = (id) => dispatch => {
-    dispatch(setCartLoading());
-    axios.get(`/api/cart/cart/${id}`)
-        .then(res => dispatch({
-            type: GET_CART,
-            payload: res.data
-        }))
-        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-}
+export const getCart = (id) => async (dispatch) => {
+  dispatch({ type: GET_CART_LOAD });
+  try {
+    let result = await axios.get(`/api/cart/61eff6eb27c8731b1796a27b`);
+    dispatch({
+      type: GET_CART_SUCESS,
+      payload: result.data.listCart,
+    });
+  } catch (error) {
+    dispatch({ type: GET_CART_FAIL, payload: error.response.data });
 
-export const addToCart = (id, productId, quantity) => dispatch => {
-    axios.post(`/api/cart/${id}`, {productId, quantity})
-        .then(res => dispatch({
-            type: ADD_TO_CART,
-            payload: res.data
-        }))
-        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-}
+  }
+};
 
-export const deleteFromCart = (userId, itemId) => dispatch => {
-    axios.delete(`/api/cart/${userId}/${itemId}`)
-        .then(res => dispatch({
-            type: DELETE_FROM_CART,
-            payload: res.data
-        }))
-        .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
-}
-
-export const setCartLoading = () => {
-    return{
-        type: CART_LOADING
-    }
-}
