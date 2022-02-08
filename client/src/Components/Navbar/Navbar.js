@@ -44,7 +44,12 @@ const Navbarr = () => {
         <NavDropdown.Item href="/Printers"   className="linn">Printers</NavDropdown.Item>
       </NavDropdown>
               <Link to="/ContactUS" className="lin">ContactUS</Link>
-              <Link to="/cart" className="lin">Cart</Link>
+              {auth &&
+                <Link
+                  // to='/cart'
+                  to={`/cart/${auth._id}`}
+                  className="lin">Cart</Link>
+              }
           
               {isAuth ? (
                 <div className="Profile">

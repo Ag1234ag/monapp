@@ -1,8 +1,22 @@
 h2{
-    font-size: 80px;
-    font-family: "Comic sans Ms", cursive , sans-serif ; 
-    font-style:italic;
-    color:black;
-    text-align: center;
-    
+    font-size: 80px !important;
+    font-family: "Comic sans Ms", cursive , sans-serif !important;
+    font-style:italic !important;
+    color:black !important;
+    text-align: center !important;
+    animation: type 3s infinite steps(22);
+white-space: nowrap !important;
+overflow: hidden !important;
+}
+@keyframes type {
+    0% {
+        width: 0ch;
+    }
+    100% {
+        width:22ch;
+    }
+}
+
+.delivery{
+    display: flex !important;
 }

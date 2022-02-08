@@ -37,9 +37,9 @@
     border: transparent !important;
  
  }
- .Profile  img{border-radius: 50%;
-  display :block;
-  margin-left: 20px;
-  overflow: hidden;
-width: 38px;
-height: 38px;}
+ .Profile  img{border-radius: 50% !important; 
+  display :block !important;
+  margin-left: 20px !important;
+  overflow: hidden !important;
+width: 38px !important;
+height: 38px !important;}
