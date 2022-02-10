@@ -27,7 +27,7 @@ import Filiter from "./Components/Filter/Filter";
 import DetailsProduct from "./Pages/DetailsProduct/DetailsProduct";
 import { useDispatch } from 'react-redux';
 import { getAuthUser } from './JS/Actions/authActions';
-
+import EditUser from "./Components/Auth/EditUser";
 function App() {
 
   const token = localStorage.getItem('token')
@@ -45,6 +45,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/Product" component={ProductList} />
         <Route path="/Filiter" component={Filiter} />
+        <Route path="/Profile/:id" component={EditUser} />
         <Route path="/ContactUS" component={ContactUS} />
         <Route path="/Smartphone" component={ListeSmartphone} />
         <Route path="/Computers" component={ListeComputers} />

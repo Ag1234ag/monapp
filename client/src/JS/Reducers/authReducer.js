@@ -5,6 +5,9 @@ import {
     REGISTER_USER,
     AUTH_ERROR,
     SET_LOADING,
+    EDIT_USER_FAIL,
+    TOGGLE_FALSE,
+  TOGGLE_TRUE,
   } from "../ActionTypes/AuthTypes";
   
   const initState = {
@@ -13,6 +16,7 @@ import {
     isAuth: false,
     isLoading: true,
     msg: null,
+    edit: false,
   };
   
   export default function (state = initState, { type, payload }) {
@@ -35,6 +39,12 @@ import {
         return { ...state, isLoading: false, isAuth: true, ...payload };
       case GET_AUTH_USER:
         return { ...state, isLoading: false, isAuth: true, ...payload };
+        case TOGGLE_TRUE:
+          return { ...state, edit: true };
+        case TOGGLE_FALSE:
+          return { ...state, edit: false };
+        case EDIT_USER_FAIL:
+      return { ...state, errors: payload };
       default:
         return state;
     }

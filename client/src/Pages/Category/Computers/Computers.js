@@ -1,15 +1,18 @@
 import React from 'react';
-import {
-  getProduct,
-} from "../../../JS/Actions/productActions";
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import './Computers.css';
 const Computers = ({ product }) => {
-  console.log({ product }); 
-  const dispatch = useDispatch();
-  return <div>
-    
-  <h4> {product.NameProduct} </h4>
-  </div>;
+  return   <div className='car'>
+       
+  <div className="Card">
+  
+    <img src={product.ImgURL} alt={product.NameProduct} /> 
+    <Link to={`/DetailsProduct/${product._id}`} >
+    <p className="title">{product.NameProduct}  </p>
+    </Link>
+  </div>
+  
+</div>
 };
 
 export default Computers;

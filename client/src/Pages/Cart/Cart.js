@@ -5,7 +5,7 @@ import { Table } from 'react-bootstrap'
 import { getCart } from "../../JS/Actions/cartActions";
 import ListeCart from "../Liste/ListeCart/ListeCart";
 import { getAuthUser } from "../../JS/Actions/authActions";
-
+import './Cart.css'
 
 const Cart = () => {
 
@@ -37,10 +37,11 @@ const Cart = () => {
   ) : (
     cartToFind ? (
       <div className="productlist">
-        <br /><br />
-        <Table striped bordered hover size="sm">
+       <h2 className="mb-5 text-center"> Shapping Cart</h2>
+        <Table className="mytable">
           <thead>
             <tr>
+              <th>Product</th>
               <th>Product Name</th>
               <th>Quantity</th>
               <th>Price</th>

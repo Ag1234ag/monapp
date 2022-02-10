@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../JS/Actions/productActions";
 import Tablettes from "../../Category/Tablettes/Tablettes";
-
+import './ListeCategory.css'
 const ListeTablettes = () => {
     const productsToFind = useSelector(
         (state) => state.productReducer.productsToFind

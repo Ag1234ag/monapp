@@ -15,7 +15,7 @@ const ListeComputers = () => {
         <h2>loading</h2>
       ) : (
         <div className="productlist">
-          { productsToFind.filter(product =>  product.Category =="pc"
+          { productsToFind.filter(product =>  product.Category =="computer"
               ).map((product) => (
             <Computers product={product} key={product.id} />
           ))}

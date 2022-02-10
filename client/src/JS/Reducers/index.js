@@ -5,6 +5,7 @@ import errorReducer from './errorReducer';
 import cartReducer from './cartReducer';
 import orderReducer from './orderReducer';
 import filiterReducer from './filiterReducer';
+import countReducer from './countReducer';
 export default combineReducers({
     authReducer,
     productReducer,
@@ -12,4 +13,5 @@ export default combineReducers({
     cartReducer,
     orderReducer,
     filiterReducer,
+    countReducer,
   });

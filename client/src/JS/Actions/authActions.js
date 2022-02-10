@@ -6,6 +6,10 @@ import {
   REGISTER_USER,
   AUTH_ERROR,
   SET_LOADING,
+  EDIT_USER_FAIL,
+  EDIT_USER_SUCESS,
+  TOGGLE_TRUE,
+  TOGGLE_FALSE,
 } from "../ActionTypes/AuthTypes";
 
 // register user
@@ -79,6 +83,22 @@ export const getAuthUser = () => async (dispatch) => {
       type: AUTH_ERROR,
     });
   }
+};
+export const toggleTrue = () => {
+  return { type: TOGGLE_TRUE };
+};
+export const toggleFalse = () => {
+  return { type: TOGGLE_FALSE };
+};
+export const EditUser = (userId, newUser) => async (dispatch) => {
+  try {
+    await axios.put(`/api/auth/${userId}`, newUser);
+    dispatch({ type: EDIT_USER_SUCESS });
+    dispatch(getAuthUser());
+    window.location.replace("/");
+  } catch (error) {
+    dispatch({ type: EDIT_USER_FAIL, payload: error.response.data });
+      }
 };
 
 export const logout = () => (dispatch) => {

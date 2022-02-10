@@ -1,0 +1,13 @@
+.table tr,
+.table tr td{
+    vertical-align: middle;
+}
+.img-prdct{
+    width: 100px;
+    height: 100px;
+   
+    border-radius: 4px ;
+} 
+.img-prdct img{
+    width: 100%;
+}

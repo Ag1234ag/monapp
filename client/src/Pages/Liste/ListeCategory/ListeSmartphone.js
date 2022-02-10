@@ -16,8 +16,8 @@ const ListeSmartphone = () => {
       
       ) : (
         <div className="productlist">
-          { productsToFind
-          .map((product) => (
+          { productsToFind.filter(product =>  product.Category =="smartphone"
+              ).map((product) => (
             <Smartphone product={product} key={product.id} />
           ))}
         </div>

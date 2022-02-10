@@ -12,6 +12,7 @@ module.exports.checkout = async (req,res) => {
         const userId = req.params.id;
         const {source} = req.body;
         let cart = await Cart.findOne({userId});
+        console.log(cart)
         let user = await User.findOne({_id: userId});
         const email = user.email;
        

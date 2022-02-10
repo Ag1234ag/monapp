@@ -80,7 +80,21 @@ router.post("/login", loginRules(), validator, async (req, res) => {
     res.status(500).send({ msg: "Server Error" });
   }
 });
-
+router.post('/:_id', async (req , res) =>{
+  try {
+      const { _id } = req.params
+      const newUser = req.body 
+      let result = await User.updateOne({ _id }, { $set: {...newUser }})
+      if(result.modifiedCount === 0 )
+      {
+          return  res.status(400).send({msg: " User already updated  !!! " })  
+      }
+      res.status(200).send({msg: " User updated succ ..... " })
+  
+  } catch (error) {
+      res.status(400).send({msg: " Can not update user with this id !!! ", error })  
+  }
+});
 router.get("/me", isAuth, (req, res) => {
   res.status(200).send({ user: req.user });
 });
@@ -89,3 +103,4 @@ const converUser = ({  FirstName, LastName, Gender, Birth, PicURL,Phone,Adresse,
   FirstName  , LastName , Gender , Birth , PicURL, Phone, Adresse, Email ,Role,
   _id,
 });
+
