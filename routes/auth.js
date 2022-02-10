@@ -95,6 +95,18 @@ router.post('/:_id', async (req , res) =>{
       res.status(400).send({msg: " Can not update user with this id !!! ", error })  
   }
 });
+router.get('/:_id', async (req , res) =>{
+  try {
+      const { _id } = req.params
+      const productToFind = await User.findOne({ _id })
+      
+      res.status(200).send({msg: "I find  the user.....", productToFind })
+
+  } catch (error) {
+      res.status(400).send({msg: " Can not get user with this id !!! ", error }) 
+     
+  }
+});
 router.get("/me", isAuth, (req, res) => {
   res.status(200).send({ user: req.user });
 });

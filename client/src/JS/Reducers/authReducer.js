@@ -7,6 +7,9 @@ import {
     SET_LOADING,
     EDIT_USER_FAIL,
     TOGGLE_FALSE,
+    GET_USER_LOAD ,
+    GET_USER_SUCESS,
+    GET_USER_FAIL,
   TOGGLE_TRUE,
   } from "../ActionTypes/AuthTypes";
   
@@ -16,7 +19,9 @@ import {
     isAuth: false,
     isLoading: true,
     msg: null,
+    errors: null,
     edit: false,
+    userToFind: {},
   };
   
   export default function (state = initState, { type, payload }) {
@@ -32,6 +37,7 @@ import {
           token: null,
           isAuth: false,
           isLoading: false,
+          
         };
       case LOGIN_USER:
       case REGISTER_USER:
@@ -45,6 +51,12 @@ import {
           return { ...state, edit: false };
         case EDIT_USER_FAIL:
       return { ...state, errors: payload };
+      case GET_USER_LOAD:
+        return { ...state, isLoading: true };
+      case GET_USER_SUCESS:
+        return { ...state, isLoading: false, userToFind: payload };
+      case GET_USER_FAIL:
+        return { ...state, isLoading: false, errors: payload };
       default:
         return state;
     }

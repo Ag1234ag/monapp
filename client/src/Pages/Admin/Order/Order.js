@@ -1,20 +1,42 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../../JS/Actions/orderActions";
-
+import ListeOrder from "../../Liste/ListeOrder/ListeOrder";
+import { Table } from 'react-bootstrap';
+import './Order.css'
 const Order = () => {
   const productsToFind = useSelector(
     (state) => state.orderReducer.orders
   );
-  const load = useSelector((state) => state.productReducer.load);
+  const load = useSelector((state) => state.orderReducer.loading);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getOrders('61ec4dafab99d2ce2f2b5171'));
+    dispatch(getOrders());
   }, [dispatch]);
   console.log(productsToFind)
-  return <div>
-      <p>order admin</p>
-  </div>;
+  return load ? (
+    <h2>loading</h2>
+  ) : (
+    productsToFind ? (
+      <div>
+      <br /><br />
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>Purchaser</th>
+            <th>Invoice </th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          { productsToFind.map((product) => (
+      <ListeOrder product={product} key={product.id} />
+    ))}
+        </tbody>
+      </Table>
+    </div>
+    ) : (<h2>Empty Order  !!</h2>)
+  );
 };
 
 export default Order;

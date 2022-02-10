@@ -6,7 +6,15 @@ module.exports.get_orders = async (req,res) => {
     const userId = req.params.id;
     Order.find({userId}).sort({date:-1}).then(orders => res.json(orders));
 }
+module.exports.getOrders =async (req , res) =>{
+    try {
+        const listProducts = await Order.find()
+        res.status(200).send({msg: "This is the list of orderss.....", listProducts })
 
+    } catch (error) {
+        res.status(400).send({msg: " Can not get all  prders !!! ", error })  
+    }
+}
 module.exports.checkout = async (req,res) => {
     try{
         const userId = req.params.id;

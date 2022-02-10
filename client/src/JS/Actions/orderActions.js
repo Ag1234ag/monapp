@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { returnErrors } from './errorActions';
-import { GET_ORDERS, CHECKOUT, ORDERS_LOADING } from '../ActionTypes/OrderTypes';
+import { GET_ORDERS, CHECKOUT, ORDERS_LOADING
+, GET_ORDERS_SUCESS , GET_ORDERS_FAIL , GET_ORDERS_LOAD } from '../ActionTypes/OrderTypes';
 
-export const getOrders = (id) => dispatch => {
+export const getOrder = (id) => dispatch => {
     dispatch(setOrdersLoading());
     axios.get(`/api/order/${id}`)
         .then(res => dispatch({
@@ -20,7 +21,18 @@ export const checkout = (id, source) => dispatch => {
         }))
         .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 }
-
+export const getOrders = () => async (dispatch) => {
+    dispatch({ type: GET_ORDERS_LOAD });
+    try {
+      let result = await axios.get(`api/order/`);
+      dispatch({
+        type: GET_ORDERS_SUCESS,
+        payload: result.data.listProducts,
+      });
+    } catch (error) {
+      dispatch({ type: GET_ORDERS_FAIL, payload: error.response.data });
+    }
+  };
 export const setOrdersLoading = () => {
     return{
         type: ORDERS_LOADING

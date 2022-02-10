@@ -8,7 +8,9 @@ export const EDIT_USER_FAIL = "EDIT_USER_FAIL";
 export const LOGOUT = "LOGOUT";
 export const TOGGLE_TRUE = "TOGGLE_TRUE";
 export const TOGGLE_FALSE = "TOGGLE_FALSE";
-
+export const GET_USER_LOAD = "GET_USER_LOAD";
+export const GET_USER_SUCESS = "GET_USER_SUCESS";
+export const GET_USER_FAIL = "GET_USER_FAIL";
 export const AUTH_ERROR = "AUTH_ERROR";
 
 export const SET_LOADING ="SET_LOADING"

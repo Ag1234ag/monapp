@@ -5,6 +5,7 @@ import { Table } from 'react-bootstrap'
 import { getCart } from "../../JS/Actions/cartActions";
 import ListeCart from "../Liste/ListeCart/ListeCart";
 import { getAuthUser } from "../../JS/Actions/authActions";
+import { checkout } from "../../JS/Actions/orderActions";
 import './Cart.css'
 
 const Cart = () => {
@@ -26,7 +27,15 @@ const Cart = () => {
       dispatch(getCart(user._id))
     }
   }, [dispatch, user._id, token]);
+  const order ={
 
+      productId:"",
+      name: "",
+      quantity: "",
+      price: "",
+      bill: ""
+}
+ 
 
   console.log({ cartToFind })
 
@@ -54,6 +63,9 @@ const Cart = () => {
             )}
           </tbody>
         </Table>
+        <div  className="dee">
+     <button  onClick={() => dispatch(checkout(user._id , order ))}> Add Order </button>
+     </div>
       </div>
     ) : (<h2>Empty Shopping Cart, you have to add products in basket !!</h2>)
   );

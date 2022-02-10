@@ -8,6 +8,9 @@ import {
   SET_LOADING,
   EDIT_USER_FAIL,
   EDIT_USER_SUCESS,
+  GET_USER_LOAD ,
+  GET_USER_SUCESS,
+  GET_USER_FAIL,
   TOGGLE_TRUE,
   TOGGLE_FALSE,
 } from "../ActionTypes/AuthTypes";
@@ -99,6 +102,15 @@ export const EditUser = (userId, newUser) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: EDIT_USER_FAIL, payload: error.response.data });
       }
+};
+export const getUser = (userId) => async (dispatch) => {
+  dispatch({ type: GET_USER_LOAD });
+  try {
+    let result = await axios.get(`/api/auth/${userId}`);
+    dispatch({ type: GET_USER_SUCESS, payload: result.data.productToFind });
+  } catch (error) {
+    dispatch({ type: GET_USER_FAIL, payload: error.response.data });
+  }
 };
 
 export const logout = () => (dispatch) => {
