@@ -6,7 +6,7 @@ const ListePrinters = () => {
     const productsToFind = useSelector(
         (state) => state.productReducer.productsToFind
       );
-      const filterr  = useSelector(
+      const filiter = useSelector(
         (state) => state.filiterReducer.nameProduct
       );
       const load = useSelector((state) => state.productReducer.load);
@@ -14,12 +14,12 @@ const ListePrinters = () => {
       useEffect(() => {
         dispatch(getProducts());
       }, [dispatch]);
-      console.log(filterr)
       return load ? (
         <h2>loading</h2>
       ) : (
         <div className="productlist">
-          { productsToFind.filter(product => product.Category.toUpperCase().includes(filterr.toUpperCase())  
+          { productsToFind.filter(product => product.NameProduct.toUpperCase().includes(filiter.toUpperCase())  
+               &&  product.Category =="printers"
                 ).map((product) => (
             <Printers product={product} key={product.id} />
           ))}

@@ -106,8 +106,8 @@ export const EditUser = (userId, newUser) => async (dispatch) => {
 export const getUser = (userId) => async (dispatch) => {
   dispatch({ type: GET_USER_LOAD });
   try {
-    let result = await axios.get(`/api/auth/${userId}`);
-    dispatch({ type: GET_USER_SUCESS, payload: result.data.productToFind });
+    let result = await axios.get(`/api/user/${userId}`);
+    dispatch({ type: GET_USER_SUCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: GET_USER_FAIL, payload: error.response.data });
   }

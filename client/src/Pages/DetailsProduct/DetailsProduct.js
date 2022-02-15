@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../JS/Actions/productActions";
 import { AddToCart } from "../../JS/Actions/cartActions";
+import { Link } from "react-router-dom";
 import { decrement, increment  } from "../../JS/Actions/countActions";
 import { useParams } from "react-router-dom";
 import { AiOutlineBarcode } from "react-icons/ai";
@@ -50,7 +51,9 @@ const DetailsProduct = () => {
      <h2> <FaWeightHanging style={{ color:"black" , fontSize: "1.5em"}} /> {productsToFind.Weight} </h2>
      <h2>  <GiPriceTag style={{ color:"black" , fontSize: "1.5em"}} />{productsToFind.Price} </h2>
      <div  className="de">
+     <Link to="/" className="link">
      <button  onClick={() => dispatch(AddToCart(userToFind._id , prod ))}> Add To Cart </button>
+    </Link>
      </div>
      </div>
   </div>;

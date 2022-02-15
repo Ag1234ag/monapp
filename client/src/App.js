@@ -28,7 +28,8 @@ import DetailsProduct from "./Pages/DetailsProduct/DetailsProduct";
 import { useDispatch } from 'react-redux';
 import { getAuthUser } from './JS/Actions/authActions';
 import EditUser from "./Components/Auth/EditUser";
-import Invoice from './Pages/Invoice/Invoice'
+import Invoice from './Pages/Invoice/Invoice';
+import EditProduct from "./Pages/Admin/EditProduct/EditProduct";
 function App() {
 
   const token = localStorage.getItem('token')
@@ -54,12 +55,13 @@ function App() {
         <Route path="/Printers" component={ListePrinters} />
         <Route path="/Order" component={Order} />
         <Route path="/AddProduct" component={AddProduct} />
+        <Route path="/EditProduct/:id" component={EditProduct} />
         <Route path="/Profile" component={Profile} />
         <Route path="/Homeadmin" component={Homeadmin} />
         <Route path="/login" component={Login} />
         <Route path="/CreateAccount" component={Register} />
         <Route path="/cart/:id" component={Cart} />
-        <Route path="Invoice/:id" component={Invoice} />
+        <Route path="/Invoice/:id" component={Invoice} />
         <Route path="/DetailsProduct/:id" component={DetailsProduct} />
         <Route path="/ListeCart" component={ListeCart} />
         <Route path="/*" component={Error} />

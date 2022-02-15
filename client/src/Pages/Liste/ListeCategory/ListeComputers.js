@@ -6,6 +6,9 @@ const ListeComputers = () => {
     const productsToFind = useSelector(
         (state) => state.productReducer.productsToFind
       );
+      const filiter = useSelector(
+        (state) => state.filiterReducer.nameProduct
+      );
       const load = useSelector((state) => state.productReducer.load);
       const dispatch = useDispatch();
       useEffect(() => {
@@ -15,8 +18,9 @@ const ListeComputers = () => {
         <h2>loading</h2>
       ) : (
         <div className="productlist">
-          { productsToFind.filter(product =>  product.Category =="computer"
-              ).map((product) => (
+          { productsToFind.filter(product => product.NameProduct.toUpperCase().includes(filiter.toUpperCase())  
+               &&  product.Category =="computer"
+                ).mapmap((product) => (
             <Computers product={product} key={product.id} />
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from 'react-bootstrap'
-
+import { Link } from "react-router-dom";
 import { getCart } from "../../JS/Actions/cartActions";
 import ListeCart from "../Liste/ListeCart/ListeCart";
 import { getAuthUser } from "../../JS/Actions/authActions";
@@ -64,7 +64,9 @@ const Cart = () => {
           </tbody>
         </Table>
         <div  className="dee">
+        <Link to="/" className="link">
      <button  onClick={() => dispatch(checkout(user._id , order ))}> Add Order </button>
+     </Link>
      </div>
       </div>
     ) : (<h2>Empty Shopping Cart, you have to add products in basket !!</h2>)

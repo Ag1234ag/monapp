@@ -7,23 +7,25 @@ const ListeTablettes = () => {
     const productsToFind = useSelector(
         (state) => state.productReducer.productsToFind
       );
-      const productsToFinddd = useSelector(
-        (state) => state
+      const filiter = useSelector(
+        (state) => state.filiterReducer.nameProduct
       );
       const load = useSelector((state) => state.productReducer.load);
       const dispatch = useDispatch();
       useEffect(() => {
         dispatch(getProducts());
       }, [dispatch]);
-    console.log(productsToFinddd)
+    
 
       return load ? (
         <h2>loading</h2>
       ) : (
         <div className="productlist">
-          { productsToFind.map((product) => (
+          { productsToFind.filter(product => product.NameProduct.toUpperCase().includes(filiter.toUpperCase())  
+               &&  product.Category =="tablette"
+                ).map((product) => (
             <Tablettes product={product} key={product.id} />
-          ))}
+            ))}
         </div>
       );
     };

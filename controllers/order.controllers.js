@@ -2,9 +2,17 @@ const Order = require('../model/order');
 const Cart = require('../model/Cart');
 const User = require('../model/User');
 
-module.exports.get_orders = async (req,res) => {
-    const userId = req.params.id;
-    Order.find({userId}).sort({date:-1}).then(orders => res.json(orders));
+module.exports.getOrder = async (req , res) =>{
+    try {
+        const id  = req.params.id ;
+        const listProducts  = await Order.findOne({ id })
+        
+        res.status(200).send({msg: "I find  the order.....", listProducts  })
+
+    } catch (error) {
+        res.status(400).send({msg: " Can not get order with this id !!! ", error }) 
+       
+    }
 }
 module.exports.getOrders =async (req , res) =>{
     try {

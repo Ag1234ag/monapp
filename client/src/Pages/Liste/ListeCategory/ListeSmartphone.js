@@ -8,6 +8,9 @@ const ListeSmartphone = () => {
       );
       const load = useSelector((state) => state.productReducer.load);
       const dispatch = useDispatch();
+      const filiter = useSelector(
+        (state) => state.filiterReducer.nameProduct
+      );
       useEffect(() => {
         dispatch(getProducts());
       }, [dispatch]);
@@ -16,7 +19,8 @@ const ListeSmartphone = () => {
       
       ) : (
         <div className="productlist">
-          { productsToFind.filter(product =>  product.Category =="smartphone"
+          { productsToFind.filter(product => product.NameProduct.toUpperCase().includes(filiter.toUpperCase()) 
+             &&  product.Category =="smartphone"
               ).map((product) => (
             <Smartphone product={product} key={product.id} />
           ))}

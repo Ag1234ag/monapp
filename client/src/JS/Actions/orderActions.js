@@ -8,7 +8,7 @@ export const getOrder = (id) => dispatch => {
     axios.get(`/api/order/${id}`)
         .then(res => dispatch({
             type: GET_ORDERS,
-            payload: res.data
+            payload: res.data.listProducts
         }))
         .catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 }
