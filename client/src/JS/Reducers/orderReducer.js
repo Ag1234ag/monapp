@@ -1,4 +1,4 @@
-import { GET_ORDERS, CHECKOUT, ORDERS_LOADING ,GET_ORDERS_SUCESS , GET_ORDERS_FAIL , GET_ORDERS_LOAD } from '../ActionTypes/OrderTypes';
+import { GET_ORDERS, CHECKOUT, ORDERS_LOADING, GET_ORDERS_SUCESS, GET_ORDERS_FAIL, GET_ORDERS_LOAD } from '../ActionTypes/OrderTypes';
 
 const initialState = {
     orders: [],
@@ -6,29 +6,29 @@ const initialState = {
     errors: null,
 }
 
-export default function(state=initialState, action){
-    switch(action.type){
+const orderReducer = (state = initialState, action) => {
+    switch (action.type) {
         case GET_ORDERS_LOAD:
             return { ...state, loading: true };
-          case GET_ORDERS_SUCESS:
+        case GET_ORDERS_SUCESS:
             return { ...state, loading: false, orders: action.payload };
-          case GET_ORDERS_FAIL:
+        case GET_ORDERS_FAIL:
             return { ...state, loading: false, errors: action.payload };
         case GET_ORDERS:
-            return{
+            return {
                 ...state,
                 orders: action.payload,
                 loading: false
             }
 
         case CHECKOUT:
-            return{
+            return {
                 ...state,
                 orders: [action.payload, ...state.orders]
             }
 
         case ORDERS_LOADING:
-            return{
+            return {
                 ...state,
                 loading: true
             }
@@ -37,3 +37,5 @@ export default function(state=initialState, action){
             return state;
     }
 }
+
+export default orderReducer

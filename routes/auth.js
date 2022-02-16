@@ -99,10 +99,16 @@ router.put('/:_id', async (req, res) => {
     res.status(400).send({ msg: " Can not update user with this id !!! ", error })
   }
 });
+
+
 router.get("/me", isAuth, (req, res) => {
   res.status(200).send({ user: req.user });
 });
+
+
 module.exports = router;
+
+
 const converUser = ({ FirstName, LastName, Gender, Birth, PicURL, Phone, Adresse, Email, Role, _id }) => ({
   FirstName, LastName, Gender, Birth, PicURL, Phone, Adresse, Email, Role,
   _id,

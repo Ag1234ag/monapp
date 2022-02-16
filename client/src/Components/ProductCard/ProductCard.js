@@ -1,5 +1,5 @@
 import React from "react";
-import { Card , Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from '../../JS/Actions/cartActions';
@@ -8,6 +8,8 @@ import {
   getProduct,
   toggleTrue,
 } from "../../JS/Actions/productActions";
+
+
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
@@ -18,9 +20,7 @@ const ProductCard = ({ product }) => {
           <Card.Title>{product.NameProduct}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
           </Card.Subtitle>
-         
-          
-          <Button>Add To Cart</Button> 
+          <Button>Add To Cart</Button>
         </Card.Body>
       </Card>
     </div>

@@ -8,7 +8,7 @@ import {
   SET_LOADING,
   EDIT_USER_FAIL,
   EDIT_USER_SUCESS,
-  GET_USER_LOAD ,
+  GET_USER_LOAD,
   GET_USER_SUCESS,
   GET_USER_FAIL,
   TOGGLE_TRUE,
@@ -30,6 +30,7 @@ export const register = (formData) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: AUTH_ERROR,
+      payload: error.response.data
     });
   }
 };
@@ -58,6 +59,7 @@ export const login = (formData) => async (dispatch) => {
 
     dispatch({
       type: AUTH_ERROR,
+      payload: error.response.data
     });
   }
 };
@@ -75,6 +77,7 @@ export const getAuthUser = () => async (dispatch) => {
     };
 
     const res = await axios.get("/api/auth/me", options);
+    console.log(res)
 
     dispatch({
       type: GET_AUTH_USER,
@@ -84,15 +87,22 @@ export const getAuthUser = () => async (dispatch) => {
     console.log(error);
     dispatch({
       type: AUTH_ERROR,
+      payload: error.response.data
     });
   }
 };
+
+
 export const toggleTrue = () => {
   return { type: TOGGLE_TRUE };
 };
+
+
 export const toggleFalse = () => {
   return { type: TOGGLE_FALSE };
 };
+
+
 export const EditUser = (userId, newUser) => async (dispatch) => {
   try {
     await axios.put(`/api/auth/${userId}`, newUser);
@@ -101,8 +111,10 @@ export const EditUser = (userId, newUser) => async (dispatch) => {
     window.location.replace("/");
   } catch (error) {
     dispatch({ type: EDIT_USER_FAIL, payload: error.response.data });
-      }
+  }
 };
+
+
 export const getUser = (userId) => async (dispatch) => {
   dispatch({ type: GET_USER_LOAD });
   try {
@@ -113,11 +125,13 @@ export const getUser = (userId) => async (dispatch) => {
   }
 };
 
+
 export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
   });
 };
+
 
 const setLoading = () => (dispatch) => {
   dispatch({

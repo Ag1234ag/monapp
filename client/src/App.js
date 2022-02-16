@@ -11,7 +11,7 @@ import Navbarr from './Components/Navbar/Navbar.js'
 import Smartphone from "./Pages/Category/Smartphone/Smartphone";
 import Cart from './Pages/Cart/Cart'
 import Computers from "./Pages/Category/Computers/Computers";
-import Tablettes  from "./Pages/Category/Tablettes/Tablettes";
+import Tablettes from "./Pages/Category/Tablettes/Tablettes";
 import Printers from "./Pages/Category/Printers/Printers";
 import ListeCart from "./Pages/Liste/ListeCart/ListeCart";
 import Homeadmin from "./Pages/Admin/HomeAdmin/Homeadmin";
@@ -25,24 +25,28 @@ import ListeSmartphone from "./Pages/Liste/ListeCategory/ListeSmartphone";
 import ListeTablettes from "./Pages/Liste/ListeCategory/ListeTablettes";
 import Filiter from "./Components/Filter/Filter";
 import DetailsProduct from "./Pages/DetailsProduct/DetailsProduct";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAuthUser } from './JS/Actions/authActions';
 import EditUser from "./Components/Auth/EditUser";
 import Invoice from './Pages/Invoice/Invoice';
 import EditProduct from "./Pages/Admin/EditProduct/EditProduct";
+import PrivateRoute from "./Router/PrivateRoute";
+
 function App() {
 
   const token = localStorage.getItem('token')
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     token &&
-      dispatch(getAuthUser());
+      dispatch(getAuthUser())
   }, [dispatch, token]);
+
 
   return (
     <div className="App">
-         <Navbarr />
+      <Navbarr />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/Product" component={ProductList} />
@@ -56,7 +60,7 @@ function App() {
         <Route path="/Order" component={Order} />
         <Route path="/AddProduct" component={AddProduct} />
         <Route path="/EditProduct/:id" component={EditProduct} />
-        <Route path="/Profile" component={Profile} />
+        <PrivateRoute path="/profile" component={Profile} />
         <Route path="/Homeadmin" component={Homeadmin} />
         <Route path="/login" component={Login} />
         <Route path="/CreateAccount" component={Register} />

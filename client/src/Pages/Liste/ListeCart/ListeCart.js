@@ -3,6 +3,8 @@ import { deletefromCart } from '../../../JS/Actions/cartActions'
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from  '../../../JS/Actions/productActions';
 import { MdDelete } from "react-icons/md";
+
+
 const ListeCart = ({ item }) => {
   const productToFind = useSelector(
     (state) => state.productReducer.productToFind

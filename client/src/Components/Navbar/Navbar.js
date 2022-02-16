@@ -1,34 +1,38 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { logout} from "../../JS/Actions/authActions";
+import { logout } from "../../JS/Actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
 import { HiOutlineLogout } from "react-icons/hi";
 import logo from '../../assets/logo.png'
 import Filter from '../Filter/Filter.js';
-import {getAuthUser } from "../../JS/Actions/authActions";
+// import { getAuthUser } from "../../JS/Actions/authActions";
 import './Navbar.css'
-import {Navbar , Container , Nav , NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+
+
 const Navbarr = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authReducer.user);
   const isAuth = useSelector((state) => state.authReducer.isAuth);
-  useEffect(() => {
-    dispatch(getAuthUser);
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAuthUser);
+  // }, [dispatch]);
+
+
   return (
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home">
-        <img
-          alt="logo"
-          src={logo}
-          width="80"
-          height="80"
-          className="d-inline-block align-top"
-        />
-        </Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <img
+              alt="logo"
+              src={logo}
+              width="80"
+              height="80"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav
@@ -37,12 +41,12 @@ const Navbarr = () => {
               navbarScroll
             >
               <Link to="/" className="lin">Home</Link>
-              <NavDropdown  title="Products Categories">
-        <NavDropdown.Item href="/Smartphone" className="linn">Smartphone</NavDropdown.Item>
-        <NavDropdown.Item href="/Tablettes"  className="linn">Tablettes</NavDropdown.Item>
-        <NavDropdown.Item href="/Computers"  className="linn">Computers</NavDropdown.Item>
-        <NavDropdown.Item href="/Printers"   className="linn">Printers</NavDropdown.Item>
-      </NavDropdown>
+              <NavDropdown title="Products Categories">
+                <NavDropdown.Item href="/Smartphone" className="linn">Smartphone</NavDropdown.Item>
+                <NavDropdown.Item href="/Tablettes" className="linn">Tablettes</NavDropdown.Item>
+                <NavDropdown.Item href="/Computers" className="linn">Computers</NavDropdown.Item>
+                <NavDropdown.Item href="/Printers" className="linn">Printers</NavDropdown.Item>
+              </NavDropdown>
               <Link to="/ContactUS" className="lin">ContactUS</Link>
               {auth &&
                 <Link
@@ -50,32 +54,34 @@ const Navbarr = () => {
                   to={`/cart/${auth._id}`}
                   className="lin">Cart</Link>
               }
-          
+
               {isAuth ? (
                 <div className="Profile">
-               <img
-               alt="PicURL"
-               src={auth.PicURL}
-               className="d-inline-block align-top"
-             />
-                   <Link to="/Profile" className="lin">{auth.FirstName} {auth.LastName}</Link>
-              
-          <button onClick={() => dispatch(logout())} className="icon" > <HiOutlineLogout style={{ color:"#fff" , fontSize: "1.5em"}} /> </button> 
-          </div>
-          ) : (
-            <div>
-              <Link to="/CreateAccount" className="lin">Create Account</Link>
-              <Link to="/login" className="lin">Login</Link>
-              
-              </div>
+                  <img
+                    alt="PicURL"
+                    src={auth.PicURL}
+                    className="d-inline-block align-top"
+                  />
+                  <Link to="/profile" className="lin">{auth.FirstName} {auth.LastName}</Link>
+
+                  <button onClick={() => dispatch(logout())} className="icon" >
+                    <HiOutlineLogout style={{ color: "#fff", fontSize: "1.5em" }} />
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <Link to="/CreateAccount" className="lin">Create Account</Link>
+                  <Link to="/login" className="lin">Login</Link>
+
+                </div>
               )}
             </Nav>
             <Filter />
           </Navbar.Collapse>
-          
-          </Container>
+
+        </Container>
       </Navbar>
-     
+
     </div>
   );
 };

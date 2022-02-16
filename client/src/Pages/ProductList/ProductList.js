@@ -8,16 +8,20 @@ const ProductList = () => {
   const productsToFind = useSelector(
     (state) => state.productReducer.productsToFind
   );
+
   const load = useSelector((state) => state.productReducer.load);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
+
+
   return load ? (
     <h2>loading</h2>
   ) : (
     <div className="productlist">
-      { productsToFind.map((product) => (
+      {productsToFind.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}
     </div>
