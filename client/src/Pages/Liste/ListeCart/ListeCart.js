@@ -3,7 +3,7 @@ import { deletefromCart } from '../../../JS/Actions/cartActions'
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from  '../../../JS/Actions/productActions';
 import { MdDelete } from "react-icons/md";
-
+import './ListeCart.css'
 
 const ListeCart = ({ item }) => {
   const productToFind = useSelector(
@@ -26,7 +26,7 @@ console.log(productToFind)
       <td>{item.quantity}</td>
       <td>{item.Price}</td>
       <div className="del">
-      <button  onClick={() => dispatch(deletefromCart(userToFind._id, item.productId ))}><MdDelete style={{ color:"black" , fontSize: "4em"}} /></button>
+      <button  onClick={() => dispatch(deletefromCart(userToFind._id, item.productId ))}><MdDelete style={{ color:"black" , fontSize: "2em"}} /></button>
       </div>
     </tr>
   )

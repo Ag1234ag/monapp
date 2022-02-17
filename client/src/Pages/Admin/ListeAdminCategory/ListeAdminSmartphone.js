@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../JS/Actions/productActions";
-import Smartphone from "../../Category/Smartphone/Smartphone";
+import AdminSmartphone from "../AdminCategory/AdminSmartphone/AdminSmartphone";
 const ListeSmartphone = () => {
     const productsToFind = useSelector(
         (state) => state
@@ -20,9 +20,9 @@ const ListeSmartphone = () => {
       ) : (
         <div className="productlist">
           { productsToFind.filter(product => product.NameProduct.toUpperCase().includes(filiter.toUpperCase()) 
-             &&  product.Category === "smartphone"
+             &&  product.Category =="smartphone"
               ).map((product) => (
-            <Smartphone product={product} key={product.id} />
+            <AdminSmartphone product={product} key={product.id} />
           ))}
         </div>
       );

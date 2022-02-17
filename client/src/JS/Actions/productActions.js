@@ -62,7 +62,7 @@ export const toggleFalse = () => {
   return { type: TOGGLE_FALSE };
 };
 
-export const EditProduct = (productId, newProduct) => async (dispatch) => {
+export const editProduct = (productId, newProduct) => async (dispatch) => {
   try {
     await axios.put(`/api/products/${productId}`, newProduct);
     dispatch({ type: EDIT_PRODUCT_SUCESS });

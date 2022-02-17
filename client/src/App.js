@@ -31,7 +31,10 @@ import EditUser from "./Components/Auth/EditUser";
 import Invoice from './Pages/Invoice/Invoice';
 import EditProduct from "./Pages/Admin/EditProduct/EditProduct";
 import PrivateRoute from "./Router/PrivateRoute";
-
+import ListeAdminComputers from './Pages/Admin/ListeAdminCategory/ListeAdminComputers';
+import ListeAdminPrinters from './Pages/Admin/ListeAdminCategory/ListeAdminPrinters';
+import ListeAdminSmartphone from './Pages/Admin/ListeAdminCategory/ListeAdminSmartphone';
+import ListeAdminTablettes from './Pages/Admin/ListeAdminCategory/ListeAdminTablettes';
 function App() {
 
   const token = localStorage.getItem('token')
@@ -57,6 +60,10 @@ function App() {
         <Route path="/Computers" component={ListeComputers} />
         <Route path="/Tablettes" component={ListeTablettes} />
         <Route path="/Printers" component={ListePrinters} />
+        <Route path="/AdminSmartphone" component={ListeAdminSmartphone} />
+        <Route path="/AdminComputers" component={ListeAdminComputers} />
+        <Route path="/AdminTablettes" component={ListeAdminTablettes} />
+        <Route path="/AdminPrinters" component={ListeAdminPrinters} />
         <Route path="/Order" component={Order} />
         <Route path="/AddProduct" component={AddProduct} />
         <Route path="/EditProduct/:id" component={EditProduct} />

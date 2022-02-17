@@ -7,7 +7,6 @@ import './Auth.css'
 
 
 const EditUserr = () => {
-  // const history = useHistory();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -26,7 +25,7 @@ const EditUserr = () => {
   const userToFind = useSelector(
     (state) => state.authReducer.user
   );
-  console.log(userToFind)
+
 
   useEffect(() => {
     edit
@@ -46,11 +45,6 @@ const EditUserr = () => {
 
   const handleFormChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  // const handleConfim = () => {
-  //   dispatch(register(formData));
-  //   history.push("/");
-  // };
   return (<div className="Auth">
     <div className="form">
       <h3 className="heading">Register</h3>
@@ -75,7 +69,7 @@ const EditUserr = () => {
       <br />
       <input type="password" onChange={handleFormChange} placeholder="Password" name="Password" autocomplete="off" className="password" required />
       <br />
-      <Link to="/Profile" className="link">
+      <Link to="/" className="link">
         <button onClick={() => dispatch(EditUser(userToFind._id, formData))} className="submit-btn">Edit</button>
       </Link>
     </div>

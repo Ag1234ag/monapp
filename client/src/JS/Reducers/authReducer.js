@@ -62,12 +62,6 @@ const authReducer = (state = initState, { type, payload }) => {
       return { ...state, edit: false };
     case EDIT_USER_FAIL:
       return { ...state, errors: payload };
-    // case GET_USER_LOAD:
-    //   return { ...state, isLoading: true };
-    // case GET_USER_SUCESS:
-    //   return { ...state, isLoading: false, userToFind: payload };
-    // case GET_USER_FAIL:
-    //   return { ...state, isLoading: false, errors: payload };
     default:
       return state;
   }
