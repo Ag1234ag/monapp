@@ -21,8 +21,8 @@ const ProductList = () => {
     <h2>loading</h2>
   ) : (
     <div className="productlist">
-      {productsToFind.map((product) => (
-        <ProductCard product={product} key={product.id} />
+      {productsToFind.map((product , i=4 ) => (
+        <ProductCard product={product} key={i}   />
       ))}
     </div>
   );

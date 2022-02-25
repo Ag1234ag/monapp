@@ -4,6 +4,7 @@ import { getOrders } from "../../../JS/Actions/orderActions";
 import ListeOrder from "../../Liste/ListeOrder/ListeOrder";
 import { Table } from 'react-bootstrap';
 import './Order.css'
+// import { getUser } from "../../../JS/Actions/authActions";
 
 
 const Order = () => {
@@ -13,6 +14,8 @@ const Order = () => {
   );
   const load = useSelector((state) => state.orderReducer.loading);
   const dispatch = useDispatch();
+
+  console.log({ productsToFind })
 
   useEffect(() => {
     dispatch(getOrders());
@@ -32,11 +35,12 @@ const Order = () => {
               <th>Purchaser</th>
               <th>Invoice </th>
               <th>Price</th>
+              <th>Validation</th>
             </tr>
           </thead>
           <tbody>
             {productsToFind.map((product) => (
-              <ListeOrder product={product} key={product.id} />
+              <ListeOrder product={product} key={product._id} />
             ))}
           </tbody>
         </Table>

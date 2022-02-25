@@ -19,7 +19,8 @@ const ListeComputers = () => {
       ) : (
         <div className="productlist">
           { productsToFind.filter(product => product.NameProduct.toUpperCase().includes(filiter.toUpperCase())  
-                ).map((product) => (
+               &&  product.Category == "computers"
+               ).map((product) => (
             <Computers product={product} key={product.id} />
           ))}
         </div>

@@ -17,7 +17,7 @@ import {
 
 // register user
 
-export const register = (formData) => async (dispatch) => {
+export const register = (formData, history) => async (dispatch) => {
   dispatch(setLoading());
   try {
     const res = await axios.post("/api/auth/register", formData);
@@ -26,6 +26,8 @@ export const register = (formData) => async (dispatch) => {
       type: REGISTER_USER,
       payload: res.data, //  { msg: "register Success", user, token }
     });
+    history.push('/')
+
   } catch (error) {
     console.log(error);
     dispatch({
@@ -37,7 +39,7 @@ export const register = (formData) => async (dispatch) => {
 
 // login user
 
-export const login = (formData) => async (dispatch) => {
+export const login = (formData, history) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
@@ -45,18 +47,11 @@ export const login = (formData) => async (dispatch) => {
 
     dispatch({
       type: LOGIN_USER,
-      payload: res.data, //  { msg: "Login Success", user, token }
+      payload: res.data, 
     });
+    history.push('/')
   } catch (error) {
-    console.dir(error);
-    const { errors, msg } = error.response.data;
-    if (Array.isArray(errors)) {
-      errors.forEach((err) => alert(err.msg));
-    }
-    if (msg) {
-      alert(msg);
-    }
-
+    console.log(error);
     dispatch({
       type: AUTH_ERROR,
       payload: error.response.data
@@ -118,6 +113,7 @@ export const EditUser = (userId, newUser) => async (dispatch) => {
 export const getUser = (userId) => async (dispatch) => {
   dispatch({ type: GET_USER_LOAD });
   try {
+    // let result = await axios.get(`/api/user/620cdbdf079b01b35e7dc37b`);
     let result = await axios.get(`/api/user/${userId}`);
     dispatch({ type: GET_USER_SUCESS, payload: result.data });
   } catch (error) {

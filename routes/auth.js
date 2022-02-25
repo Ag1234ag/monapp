@@ -105,6 +105,11 @@ router.get("/me", isAuth, (req, res) => {
   res.status(200).send({ user: req.user });
 });
 
+router.get("/", async (req, res) => {
+  const users = await User.find()
+  res.status(200).send({ users });
+});
+
 
 module.exports = router;
 

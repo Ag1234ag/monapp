@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { register } from "../../JS/Actions/authActions";
 import './Auth.css'
 const Register = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const errors = useSelector((state) => state.authReducer.errors);
+
+
   const [formData, setFormData] = useState({
     FirstName: "",
     LastName: "",
@@ -24,12 +28,16 @@ const Register = (props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleConfim = () => {
-    dispatch(register(formData));
-    history.push("/");
+    dispatch(register(formData, history));
+    // history.push("/");
   };
   return ( <div className="Auth">
        <div className="form">
         <h3 className="heading">Register</h3>
+        {errors &&
+    errors.map((error,i) => <h6 className="error_msg" key={i}>{error.msg}</h6>)
+    }
+
         <input type="text" onChange={handleFormChange} placeholder="FirstName"  name="FirstName" autocomplete="off" className="FirstName" required />
         <br/>
         <input type="text" onChange={handleFormChange} placeholder="LastName" name="LastName" autocomplete="off" className="LastName" required />
@@ -51,7 +59,7 @@ const Register = (props) => {
         <br/>
         <input type="password"  onChange={handleFormChange} placeholder="Password" name="Password" autocomplete="off" className="password" required />
         <br/>
-        <button  onClick={handleConfim}className="submit-btn">Register</button>
+        <button  onClick={handleConfim} className="submit-btn">Register</button>
      <Link to="/login" className="link">D'ont have an acount? Register One</Link>
     </div>
   </div>

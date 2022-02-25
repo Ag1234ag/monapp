@@ -8,7 +8,7 @@ import logo from '../../assets/logo.png'
 import './Invoice.css'
 
 
-const Invoice = () => {
+const Invoice = ({location}) => {
 
   const params = useParams();
   const userToFind = useSelector(
@@ -17,19 +17,21 @@ const Invoice = () => {
   const productsToFind = useSelector(
     (state) => state.orderReducer.orders
   );
+
   const load = useSelector((state) => state.orderReducer.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser(params.id));
-    dispatch(getOrder(params.id));
-  }, [dispatch, params.id]);
+    productsToFind.userId &&
+      dispatch(getUser(productsToFind.userId));
+    dispatch(getOrder(location.state._id));
+  }, [dispatch, params.id, productsToFind.userId]);
 
-  console.log(userToFind)
+ 
 
-  return load ? (
-    <h2>loading</h2>
-  ) : (
+  return (
+    load ? <h2>loading</h2>
+ : (
     <div>
       <img
         alt="logo"
@@ -38,23 +40,29 @@ const Invoice = () => {
         height="100"
         className="d-inline-block align-top"
       />
-      <div claasName="user">
-        <h2>FirstName:{userToFind.FirstName}</h2>
-        <h2>LastName:{userToFind.LastName}</h2>
-        <h2>Birth:{userToFind.Birth}</h2>
-        <h2>Adresse:{userToFind.Adresse}</h2>
-        <h2>Phone:{userToFind.Phone}</h2>
-        <h2>Email:{userToFind.Email}</h2>
-      </div>
-      {productsToFind.items.map((product) => (
-        <ListeItems product={product} key={product.id} />
-      ))}
-      <h2>{productsToFind.bill} </h2>
+      {userToFind &&
+        <div className="user">
+          <h2>FirstName:{userToFind.FirstName}</h2>
+          <h2>LastName:{userToFind.LastName}</h2>
+          <h2>Birth:{userToFind.Birth}</h2>
+          <h2>Adresse:{userToFind.Adresse}</h2>
+          <h2>Phone:{userToFind.Phone}</h2>
+          <h2>Email:{userToFind.Email}</h2>
+          <hr style={{ width: "50%" }} />
+        </div>
+      }
+      {productsToFind.items &&
+        productsToFind.items.map((product) => (
+          // <h2>hiiii</h2>
+          <ListeItems product={product} key={product.id} />
+        ))}
 
-
-    </div>
-
-  );
+      {productsToFind &&
+        <h2> Bill : {productsToFind.bill} </h2>
+      }
+    </div >
+  )
+  )
 };
 
 export default Invoice

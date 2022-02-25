@@ -3,12 +3,15 @@ margin-left: 100px !important;
 display: flex !important;
 border-radius: 6px;
 }
+.commentlist{
+    margin-right: 900px !important;
+}
 .details{
    margin-top: 10px;
     display: flex;
 }
 .dett h2{
-    margin-right: 450px !important;
+    margin-right: 800px !important;
 }
 .de button {
     background-color: #3D83DF; 
@@ -23,7 +26,6 @@ border-radius: 6px;
     cursor: pointer;
     border-radius: 50px;
     display: inline;
-    margin: 0px 0px 0px 500px;
   }
   .button-container .form-control{
       max-width: 80px;
@@ -43,5 +45,5 @@ border-radius: 6px;
   }
   .button-container{
     display:flex;
-    margin: 0px 5px 0px 500px;
+    margin: 0px 5px 0px 620px;
 }

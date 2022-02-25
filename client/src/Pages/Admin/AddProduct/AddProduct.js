@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addProduct } from "../../../JS/Actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 import './AddProduct.css'
+import {Link} from 'react-router-dom'
 const AddProduct = () => {
     const dispatch = useDispatch();
     const [newProduct, setNewProduct] = useState({
@@ -71,10 +72,11 @@ const AddProduct = () => {
             <label for="Weight">Weight</label>
             <input id="Weight" onChange={handleChange}  name="Weight" type="text" />
         </div>
-
+        <Link to="/ListeAdminCategory">
              <button onClick={() => dispatch(addProduct(newProduct))} className="signup-btn" type="submit">
                Add Product
             </button>
+            </Link>
             </form>
             </div>  
     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import {Button } from 'react-bootstrap';
 import { useDispatch } from "react-redux";
+import { MdDelete , MdEdit } from "react-icons/md";
 import {
   deleteProduct,
   getProduct,
@@ -19,15 +20,17 @@ const Computers = ({ product }) => {
     <p className="title">{product.NameProduct}  </p>
     </Link>
     <Link to={`/EditProduct/${product._id}`}>
-    <Button onClick={() => {
+      
+    <button className="del" onClick={() => {
                 dispatch(toggleTrue());
                 dispatch(getProduct(product._id));
-              }}>edit  </Button>
+              }}> <MdEdit className='edit' style={{ color:"black" , fontSize: "3em"}} /> </button>
                </Link>
-    <Button  onClick={() => dispatch(deleteProduct(product._id))}>delete </Button>
-  </div>
+    <button className="del"  onClick={() => dispatch(deleteProduct(product._id))}><MdDelete  style={{ color:"black" , fontSize: "3em"}} /> </button>
+    </div>
+    </div>
+   
   
-</div>
 };
 
 export default Computers;

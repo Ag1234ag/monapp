@@ -5,7 +5,7 @@
 {
   background-color:#ffffff;
   width:250px;
-  height: 300px;
+  height: 400px;
   margin: 20px;
   border-radius: 15px;
 }
@@ -31,4 +31,11 @@
 span{
   display: flex;
   justify-content: center;
+}
+.del button {
+  background-color: transparent;
+  border: transparent;
+}
+.edit:hover{
+  color: #dc3545;
 }

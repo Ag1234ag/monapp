@@ -4,8 +4,11 @@ import { Button } from 'react-bootstrap'
 import { getAuthUser, toggleTrue } from "../../JS/Actions/authActions";
 import { Link } from "react-router-dom";
 import "./Profile.css"
-
-
+import {FiUser } from "react-icons/fi";
+import {BsCalendarDate} from "react-icons/bs";
+import {ImLocation} from "react-icons/im";
+import {MdEmail} from "react-icons/md";
+import {BsFillTelephoneFill} from "react-icons/bs";
 const Profile = () => {
 
   const dispatch = useDispatch()
@@ -15,19 +18,10 @@ const Profile = () => {
   const isAuth = useSelector((state) => state.authReducer.isAuth);
   const isLoading = useSelector((state) => state.authReducer.isLoading);
 
-  // console.log({ auth })
-
-  // const token = localStorage.getItem('token')
-
-
-  // useEffect(() => {
-  //     token &&
-  //         dispatch(getAuthUser())
-  // }, [dispatch, token]);
 
 
   return (
-    isLoading ? <h2>estenaaaa</h2>
+    isLoading ? <h2>Loding</h2>
       :
       <div className="profile-container">
         {/* <img src={auth.} alt="cover" className="cover-img" /> */}
@@ -36,7 +30,7 @@ const Profile = () => {
             <div className="pd-row">
               <img src={auth.PicURL} alt="imageprofile" className="pd-image" />
               <div>
-                <h3>{auth.FirstName} {auth.LastName}</h3>
+                <h3><FiUser style={{ color:"black" , fontSize: "2em"}} />{auth.FirstName} {auth.LastName}</h3>
 
               </div>
             </div>
@@ -53,10 +47,10 @@ const Profile = () => {
           <div className="info-col">
             <div className="profile-intro">
               <h3>Info</h3>
-              <h2>{auth.Birth}</h2>
-              <h2>{auth.Adresse}</h2>
-              <h2>{auth.Phone}</h2>
-              <h2>{auth.Email}</h2>
+              <h2><BsCalendarDate style={{ color:"black" , fontSize: "1em"}} />{auth.Birth}</h2>
+              <h2><ImLocation style={{ color:"black" , fontSize: "1em"}} />{auth.Adresse}</h2>
+              <h2><MdEmail style={{ color:"black" , fontSize: "1em"}} />{auth.Phone}</h2>
+              <h2><BsFillTelephoneFill style={{ color:"black" , fontSize: "1em"}} />{auth.Email}</h2>
 
             </div>
           </div>

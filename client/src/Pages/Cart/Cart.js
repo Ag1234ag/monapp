@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Table } from 'react-bootstrap'
+import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { getCart } from "../../JS/Actions/cartActions";
 import ListeCart from "../Liste/ListeCart/ListeCart";

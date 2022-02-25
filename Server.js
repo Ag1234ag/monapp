@@ -16,11 +16,13 @@ const authRouter = require('./routes/auth')
 const cartRouter = require('./routes/cart')
 const orderRouter = require('./routes/order')
 const userRouter = require('./routes/user')
+const commentRouter = require('./routes/comment')
 app.use('/api/products/', router)
 app.use('/api/auth/', authRouter)
 app.use('/api/cart/', cartRouter);
 app.use('/api/', orderRouter);
 app.use('/api/user/', userRouter);
+app.use('/api/comment/', commentRouter);
 
 //3- port
 const port = process.env.PORT

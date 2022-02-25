@@ -112,3 +112,7 @@ input:focus::placeholder{
     text-align: center;
     transition: 1s;
 }
+
+.error_msg {
+    color : red !important
+}

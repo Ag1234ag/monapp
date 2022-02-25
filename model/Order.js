@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
     userId: {
-        type: String,
+        type: String
     },
+    user: { type: Object },
     items: [{
         productId: {
             type: String,
@@ -27,4 +28,4 @@ const OrderSchema = new Schema({
     }
 })
 
-module.exports = Order = mongoose.model('order',OrderSchema);
+module.exports = Order = mongoose.model('order', OrderSchema);

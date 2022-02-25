@@ -14,9 +14,7 @@ import Computers from "./Pages/Category/Computers/Computers";
 import Tablettes from "./Pages/Category/Tablettes/Tablettes";
 import Printers from "./Pages/Category/Printers/Printers";
 import ListeCart from "./Pages/Liste/ListeCart/ListeCart";
-import Homeadmin from "./Pages/Admin/HomeAdmin/Homeadmin";
 import Order from "./Pages/Admin/Order/Order";
-import Footer from "./Components/Footer/Footer";
 import Profile from "./Pages/Profile/Profile";
 import AddProduct from "./Pages/Admin/AddProduct/AddProduct";
 import ListeComputers from "./Pages/Liste/ListeCategory/ListeComputers";
@@ -31,10 +29,8 @@ import EditUser from "./Components/Auth/EditUser";
 import Invoice from './Pages/Invoice/Invoice';
 import EditProduct from "./Pages/Admin/EditProduct/EditProduct";
 import PrivateRoute from "./Router/PrivateRoute";
-import ListeAdminComputers from './Pages/Admin/ListeAdminCategory/ListeAdminComputers';
-import ListeAdminPrinters from './Pages/Admin/ListeAdminCategory/ListeAdminPrinters';
-import ListeAdminSmartphone from './Pages/Admin/ListeAdminCategory/ListeAdminSmartphone';
-import ListeAdminTablettes from './Pages/Admin/ListeAdminCategory/ListeAdminTablettes';
+import AdminRoute from "./Router/AdminRoute";
+import ListeAdminCategory from './Pages/Admin/ListeAdminCategory/ListeAdminCategory';
 function App() {
 
   const token = localStorage.getItem('token')
@@ -54,27 +50,23 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/Product" component={ProductList} />
         <Route path="/Filiter" component={Filiter} />
-        <Route path="/Profile/:id" component={EditUser} />
+        <PrivateRoute path="/Profile/:id" component={EditUser} />
         <Route path="/ContactUS" component={ContactUS} />
         <Route path="/Smartphone" component={ListeSmartphone} />
         <Route path="/Computers" component={ListeComputers} />
         <Route path="/Tablettes" component={ListeTablettes} />
         <Route path="/Printers" component={ListePrinters} />
-        <Route path="/AdminSmartphone" component={ListeAdminSmartphone} />
-        <Route path="/AdminComputers" component={ListeAdminComputers} />
-        <Route path="/AdminTablettes" component={ListeAdminTablettes} />
-        <Route path="/AdminPrinters" component={ListeAdminPrinters} />
-        <Route path="/Order" component={Order} />
-        <Route path="/AddProduct" component={AddProduct} />
-        <Route path="/EditProduct/:id" component={EditProduct} />
+      
+        <AdminRoute path="/ListeAdminCategory" component={ListeAdminCategory} />
+        <AdminRoute path="/Order" component={Order} />
+        <AdminRoute path="/AddProduct" component={AddProduct} />
+        <AdminRoute path="/EditProduct/:id" component={EditProduct} />
         <PrivateRoute path="/profile" component={Profile} />
-        <Route path="/Homeadmin" component={Homeadmin} />
         <Route path="/login" component={Login} />
         <Route path="/CreateAccount" component={Register} />
-        <Route path="/cart/:id" component={Cart} />
-        <Route path="/Invoice/:id" component={Invoice} />
+        <PrivateRoute path="/cart/:id" component={Cart} />
+        <AdminRoute path="/Invoice/:id" component={Invoice} />
         <Route path="/DetailsProduct/:id" component={DetailsProduct} />
-        <Route path="/ListeCart" component={ListeCart} />
         <Route path="/*" component={Error} />
       </Switch>
     </div>

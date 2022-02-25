@@ -67,7 +67,7 @@ export const editProduct = (productId, newProduct) => async (dispatch) => {
     await axios.put(`/api/products/${productId}`, newProduct);
     dispatch({ type: EDIT_PRODUCT_SUCESS });
     dispatch(getProducts());
-    window.location.replace("/");
+    // window.location.replace("/");
   } catch (error) {
     dispatch({ type: EDIT_PRODUCT_FAIL, payload: error.response.data });
       }

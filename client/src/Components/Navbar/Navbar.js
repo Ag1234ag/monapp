@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import React from "react";
+// import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { logout } from "../../JS/Actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,9 +15,9 @@ const Navbarr = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authReducer.user);
   const isAuth = useSelector((state) => state.authReducer.isAuth);
-  // useEffect(() => {
-  //   dispatch(getAuthUser);
-  // }, [dispatch]);
+
+  console.log({auth})
+
 
 
   return (
@@ -37,18 +37,37 @@ const Navbarr = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: '100px' }}
+              style={{ maxHeight: '100px', display: "flex", alignItems: "center" }}
               navbarScroll
             >
               <Link to="/" className="lin">Home</Link>
-              <NavDropdown title="Products Categories">
-                <NavDropdown.Item href="/Smartphone" className="linn">Smartphone</NavDropdown.Item>
-                <NavDropdown.Item href="/Tablettes" className="linn">Tablettes</NavDropdown.Item>
-                <NavDropdown.Item href="/Computers" className="linn">Computers</NavDropdown.Item>
-                <NavDropdown.Item href="/Printers" className="linn">Printers</NavDropdown.Item>
-              </NavDropdown>
+              {auth && auth.Role === "Admin"&&
+              <Link to="/AddProduct" className="lin">AddProduct</Link>
+              
+            }
+             {auth && auth.Role === "Admin"&&
+              <Link to="/ListeAdminCategory" className="lin">Products Admin</Link>
+              
+            }
+
+
+            {auth.Role !== "Admin" &&
+            
+            <NavDropdown title="Products Categories">
+              <NavDropdown.Item href="/Smartphone" className="linn">Smartphone</NavDropdown.Item>
+              <NavDropdown.Item href="/Tablettes" className="linn">Tablettes</NavDropdown.Item>
+              <NavDropdown.Item href="/Computers" className="linn">Computers</NavDropdown.Item>
+              <NavDropdown.Item href="/Printers" className="linn">Printers</NavDropdown.Item>
+            </NavDropdown>
+}
+
+             {auth.Role === "Admin" &&
+             <Link to="/Order" className="lin">Order</Link>
+              } 
+
+
               <Link to="/ContactUS" className="lin">ContactUS</Link>
-              {auth &&
+              {auth && auth.Role==="User" &&
                 <Link
                   // to='/cart'
                   to={`/cart/${auth._id}`}
@@ -57,16 +76,19 @@ const Navbarr = () => {
 
               {isAuth ? (
                 <div className="Profile">
-                  <img
-                    alt="PicURL"
-                    src={auth.PicURL}
-                    className="d-inline-block align-top"
-                  />
-                  <Link to="/profile" className="lin">{auth.FirstName} {auth.LastName}</Link>
-
-                  <button onClick={() => dispatch(logout())} className="icon" >
-                    <HiOutlineLogout style={{ color: "#fff", fontSize: "1.5em" }} />
-                  </button>
+                  {auth.PicURL &&
+                    <img
+                      alt="PicURL"
+                      src={auth.PicURL}
+                      className="d-inline-block align-top"
+                    />
+                  }
+                  <Link to="/profile" className="lin" >{auth.FirstName} {auth.LastName}</Link>
+                  <Link to="/login">
+                    <button onClick={() => dispatch(logout())} className="icon" >
+                      <HiOutlineLogout style={{ color: "#fff", fontSize: "1.5em" }} />
+                    </button>
+                  </Link>
                 </div>
               ) : (
                 <div>
